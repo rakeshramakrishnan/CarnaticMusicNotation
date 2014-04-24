@@ -1,0 +1,280 @@
+\documentclass[a4paper]{article}
+
+\usepackage[paper=a4paper,margin=1.0in]{geometry}
+\usepackage{amsmath}
+
+\setlength\parindent{0pt}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+\newcommand{\tolstrut}{%
+\vrule height\dimexpr\fontcharht\font`\A+0.9ex\relax width 0pt\relax}
+
+\DeclareRobustCommand{\fast}[1]{%
+\ensuremath{\overline{\mbox{\tolstrut#1}}}}
+
+\newcommand{\TBSspace}[1]{\makebox[0.20\linewidth][c]{$\text{#1}$}}
+
+\newcommand{\Hoct}[1]{\.{#1}}
+
+\newcommand{\Loct}[1]{\d{#1}}
+
+\newcommand{\varnote}[1]{$_{\text{#1}}$}
+
+\begin{document}
+\large
+\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\section{Trial}
+
+This is a trial\\
+\begin{changemargin}{-0.8in}{-0.8in}
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\TBSspace{R}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{En}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{Tha}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\fast{%
+	\TBSspace{R,}%
+	\TBSspace{GR}%
+	}%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{Ro}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{\Loct{N}}%
+	\TBSspace{S}%
+	\fast{%
+	\TBSspace{R,}%
+	\TBSspace{GR}%
+	}%
+	\\%
+	\TBSspace{$\boldsymbol{Ma}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\textbar\textbar \\%
+\end{changemargin}
+
+\begin{changemargin}{-0.8in}{-0.8in}
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\TBSspace{S}%
+	\TBSspace{\Loct{N}}%
+	\\%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{ha}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{R}%
+	\TBSspace{S}%
+	\TBSspace{\Loct{N}}%
+	\TBSspace{\Loct{P}}%
+	\\%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{nu}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{\Loct{P}}%
+	\TBSspace{,}%
+	\TBSspace{S}%
+	\TBSspace{\Loct{N}}%
+	\\%
+	\TBSspace{$\boldsymbol{Bha}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{vu}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\textbar\textbar \\%
+\end{changemargin}
+
+\begin{changemargin}{-0.8in}{-0.8in}
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{\Loct{N}}%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\TBSspace{\Loct{N}}%
+	\\%
+	\TBSspace{$\boldsymbol{lu}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\TBSspace{R}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{En}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{tha}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{P}%
+	\TBSspace{M}%
+	\TBSspace{R}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{ro}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{G}%
+	\TBSspace{R}%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{Ma}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\textbar\textbar \\%
+\end{changemargin}
+
+\begin{changemargin}{-0.8in}{-0.8in}
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\TBSspace{\Loct{N}}%
+	\TBSspace{S}%
+	\\%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{ha}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{R}%
+	\TBSspace{S}%
+	\TBSspace{\Loct{N}}%
+	\TBSspace{\Loct{P}}%
+	\\%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{nu}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{\Loct{P}}%
+	\TBSspace{,}%
+	\TBSspace{S}%
+	\TBSspace{\Loct{N}}%
+	\\%
+	\TBSspace{$\boldsymbol{Bha}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\begin{minipage}[t][][s]{0.23\linewidth}
+	\centering%
+	\TBSspace{S}%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\TBSspace{,}%
+	\\%
+	\TBSspace{$\boldsymbol{vu}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\TBSspace{$\boldsymbol{}$}%
+	\\%
+\end{minipage}%
+\hfill%
+\textbar\textbar \\%
+\end{changemargin}
+
+
+\end{document}
+
