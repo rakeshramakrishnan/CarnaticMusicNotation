@@ -32,7 +32,7 @@ def tex_preamble(f, package):
     f.write('\n\n')
     
     # Tab Sub Space newcommand definition
-    f.write(r'\newcommand{\TBSspace}[1]{\makebox[0.20\linewidth][s]{$\text{#1}$}}')
+    f.write(r'\newcommand{\TBSspace}[1]{\makebox[0.20\linewidth][c]{$\text{#1}$}}')
     f.write('\n\n')
     
     # Higher octave newcommand definition
@@ -53,9 +53,9 @@ def tex_beginning(f, fontsize = 'large'):
     
     # Set font size
     f.write('\\' + fontsize)
-    f.write('\n')
-    f.write(r'\renewcommand{\baselinestretch}{1.5}')
     f.write('\n\n')
+    # f.write(r'\renewcommand{\baselinestretch}{1.5}')
+    # f.write('\n\n')
  
 def tex_end(f):
     f.write(r'\end{document}')
@@ -71,6 +71,14 @@ def tex_section(f, section):
  
 def tex_subsection(f, subsection):
     f.write(r'\subsection{' + subsection + r'}')
+    f.write('\n\n')
+
+def tex_centering(f, center_string):
+    f.write(r'\begin{center}')
+    f.write('\n')
+    f.write(r'\textbf{' + center_string + r'} \\[5mm]')
+    f.write('\n')
+    f.write(r'\end{center}')
     f.write('\n\n')
 
 def tex_vspace(f, vspace):
@@ -135,11 +143,11 @@ def tex_tabspace(f, tabspace, linewidth = 0.23):
     for i in tabspace:
         tex_Tabsubspaceverse(f, i)  
     f.write(r'\\%')
-    f.write('\n\t')
+    f.write('\n')
     
     # Closing a Tabspace
     f.write(r'\end{minipage}%')
-    f.write('\n\t')
+    f.write('\n')
     
          
     
