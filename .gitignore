@@ -56,4 +56,6 @@ docs/_build/
 *.aux
 *.log
 *.synctex.gz
-
+*.pdf
+*.lof
+*.toc
