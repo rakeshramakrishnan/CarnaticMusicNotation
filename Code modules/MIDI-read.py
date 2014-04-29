@@ -15,7 +15,7 @@ import midi
 # from the MIDI file and the 'tick' unit is used to get the 'duration' as required. 
 # If required, the value of duration can be scaled up or down by factors of 2
 
-pattern = midi.read_midifile("trial4.mid")
+pattern = midi.read_midifile("raghuvamsa4.mid")
 count = 0;
 note = {}
 note_list = []
