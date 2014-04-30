@@ -1,0 +1,23 @@
+(dp1
+S'LengthLaghu'
+p2
+I4
+sS'SwarasPerAksharam'
+p3
+I4
+sS'TaalamSplitUp'
+p4
+S'|00'
+p5
+sS'TaalamFormalName'
+p6
+S'Chatusra Jathi Triputa Taalam'
+p7
+sS'NumberOfAksharam'
+p8
+I2
+sS'TaalamName'
+p9
+S'Adi'
+p10
+s.
