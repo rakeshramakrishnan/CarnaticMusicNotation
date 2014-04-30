@@ -132,21 +132,27 @@ class Raagam(object):
         swarasthanam1 = None
         swarasthanam2 = None
         
+        swaram_present_flag = 0
+        
         for i in self.Arohanam:
             if i.GetSwaramName() == swaramname:
                 swarasthanam1 = i.GetSwarasthanam()
+                swaram_present_flag = 1
                 break
 
                 
         for i in self.Avarohanam:
             if i.GetSwaramName() == swaramname:
                 swarasthanam2 = i.GetSwarasthanam()
+                swaram_present_flag = 1
                 break
         
+        if swaram_present_flag == 0:
+            return 0
         
         if swarasthanam1 == None and swarasthanam2 == None:
-            print 'Swar Not found!!'
-            return None
+            # print 'Swar Not found!!'
+            return 0
         
         elif swarasthanam1 != None and swarasthanam2 == None:
             return swarasthanam1
