@@ -4,13 +4,13 @@ from Raagam import *
 
 RaagamObj = Raagam('Mohanam', 28)
 filename = 'raghuvamsa4.mid'
+MIDI_note_dict_list = []
+MIDI_note_dict_list = MIDIToNoteList(filename)
+
 note_list = []
-note_list = MIDIToNoteList(filename)
 
-swaram_list = []
-
-for i in note_list:
-    notetemp = Note(i, RaagamObj)
-    swaram_list.append(notetemp)
+for i in MIDI_note_dict_list:
+    notetemp = Note.MIDIToSwaram(i, RaagamObj)
+    note_list.append(notetemp)
     
-print swaram_list
+
