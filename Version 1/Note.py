@@ -24,7 +24,8 @@ class Note(Swaram):
         self.SwarasthanamDisplayFlag = swarasthanam_display_flag
         self.LatexNote = latex_note
         
-        self.MapEverything()
+        if self.SwaramName != None and self.Swarasthanam != None:
+            self.MapEverything()
     
 
     def MapEverything(self): 
