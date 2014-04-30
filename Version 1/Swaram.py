@@ -22,3 +22,7 @@ class Swaram(object):
     
     def GetSwaramName(self):
         return self.SwaramName
+    
+    @staticmethod
+    def is_swaram_valid(swar_char):
+        return swar_char in ['S', 'R', 'G', 'M', 'P', 'D', 'N']
