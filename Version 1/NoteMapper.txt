@@ -1,0 +1,38 @@
+# Define your convention here
+# NOTE: This software outputs music score sheet for Carnatic music only. Reason: the terminology used and the Tone conventions are as per carnatic
+# music
+# If you wish to type anything else here, please put a '#' at the STARTING of the line to comment it out
+# The convention is as follows. Give a Tab space or 4 character space between the different entities
+# PLEASE DO NOT MODIFY Swaram column (i.e., first column) - It is for INTERNAL USE
+# Input character: While entering the notes, you can choose to enter as a shorter or different character for your convenience
+# The input character string is a concatenation of the input swaram and swarasthanam
+# Output character: This is what the swaram (or inpt character) will represent in the output notation
+# The order:
+# Swaram    Input character    Output character
+# Example:
+# 'S'    'S'    'Sa'   
+#
+# Note: The first column contains a list of "Swaram" and "Swarasthanam"
+# You can treat swarasthan as the equivalent of an 'accidental' in western music
+# If you want special characters in the music notation, please insert appropriate LaTex code of that symbol in the third column
+#
+'S1'    'S1'    'S'
+'R1'    'R1'    'R1'
+'R2'    'R2'    'R2'
+'R3'    'R3'    'R3'
+'G1'    'G1'    'G1'
+'G2'    'G2'    'G2'
+'G3'    'G3'    'G3'
+'M1'    'M1'    'M1'
+'M2'    'M2'    'M2'
+'P1'    'P1'    'P'
+'D1'    'D1'    'D1'
+'D2'    'D2'    'D2'
+'D3'    'D3'    'D3'
+'N1'    'N1'    'N1'
+'N2'    'N2'    'N2'
+'N3'    'N3'    'N3'
+',0'    '/'    ','
+# !'1'    '1'    '1'
+# !'2'    '2'    '2'
+# !'3'    '3'    '3'
