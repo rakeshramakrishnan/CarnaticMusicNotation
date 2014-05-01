@@ -9,15 +9,18 @@ sS'TaalamSplitUp'
 p4
 S'|00'
 p5
-sS'TaalamFormalName'
+sS'TabSpaceWidth'
 p6
-S'Chatusra Jathi Triputa Taalam'
+F0.23000000000000001
+sS'TaalamFormalName'
 p7
-sS'NumberOfAksharam'
+S'Chatusra Jathi Triputa Taalam'
 p8
-I2
-sS'TaalamName'
+sS'NumberOfAksharam'
 p9
-S'Adi'
+I4
+sS'TaalamName'
 p10
+S'Adi'
+p11
 s.
