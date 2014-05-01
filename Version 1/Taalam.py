@@ -35,13 +35,13 @@ class Taalam(object):
         for i in self.TaalamSplitUp:
             if i == '|':
                 self.NumberOfAksharam = self.NumberOfAksharam + self.LengthLaghu
-            if i == '0':
+            elif i == '0':
                 self.NumberOfAksharam = self.NumberOfAksharam + 2
-            if i == 'U':
+            elif i == 'U':
                 self.NumberOfAksharam = self.NumberOfAksharam + 1
             
             # Since we have left and right pages
-            self.NumberOfAksharam = self.NumberOfAksharam/2
+        self.NumberOfAksharam = self.NumberOfAksharam/2
             
     
     def CalculateTabSpaceWidth(self):
