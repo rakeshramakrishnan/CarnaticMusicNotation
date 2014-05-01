@@ -99,7 +99,7 @@ def GetInputNoteDictFromInput():
                     note_length = note_length + fast_multiplier*1
                 elif i == '.':
                     input_swaram_dict['octave'] = -1
-                    input_swaram_dict['octavechar'] == i
+                    input_swaram_dict['octavechar'] = i
                 elif i == '\'':
                     input_swaram_dict['octave'] = 1
                     input_swaram_dict['octavechar'] = i
