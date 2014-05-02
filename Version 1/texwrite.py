@@ -32,15 +32,15 @@ def tex_preamble(f, package):
     f.write('\n\n')
     
     # Tab Sub Space newcommand definition
-    f.write(r'\newcommand{\TBSspace}[1]{\makebox[0.20\linewidth][c]{$\text{#1}$}}')
+    f.write(r'\newcommand{\TBSSpace}[1]{\makebox[0.20\linewidth][c]{$\text{#1}$}}')
     f.write('\n\n')
     
     # Higher octave newcommand definition
-    f.write(r'\newcommand{\Hoct}[1]{\.{#1}}')
+    f.write(r'\newcommand{\HOct}[1]{\.{#1}}')
     f.write('\n\n')
     
     # Lower octave newcommand definition
-    f.write(r'\newcommand{\Loct}[1]{\d{#1}}')
+    f.write(r'\newcommand{\LOct}[1]{\d{#1}}')
     f.write('\n\n')
 
     # Note variation newcommand definition

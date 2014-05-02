@@ -80,23 +80,23 @@ class Raagam(object):
         
     
     def RaagamInfoTex(self):
-        self.ArohanamTex = '$'
+        self.ArohanamTex = ''
         for i in range(0, len(self.Arohanam) - 1):
             if self.Arohanam[i].GetSwaramName() == 'P' or self.Arohanam[i].GetSwaramName() == 'S':
                 self.ArohanamTex = self.ArohanamTex + self.Arohanam[i].GetSwaramName() + ' \: '
             else:
                 self.ArohanamTex = self.ArohanamTex + self.Arohanam[i].GetSwaramName() + '_' + str(self.Arohanam[i].GetSwarasthanam()) + ' \: '
-        self.ArohanamTex = self.ArohanamTex + '\HOct{S} \:'
-        self.ArohanamTex = self.ArohanamTex + '$'
+        self.ArohanamTex = self.ArohanamTex + '\dot{S} \:'
+        self.ArohanamTex = self.ArohanamTex + ''
                 
-        self.AvarohanamTex = '$'
-        self.AvarohanamTex = self.AvarohanamTex + '\HOct{S} \: '
+        self.AvarohanamTex = ''
+        self.AvarohanamTex = self.AvarohanamTex + '\dot{S} \: '
         for i in range(1,len(self.Avarohanam)):
             if self.Avarohanam[i].GetSwaramName() == 'P' or self.Avarohanam[i].GetSwaramName() == 'S':
                 self.AvarohanamTex = self.AvarohanamTex + self.Avarohanam[i].GetSwaramName() + ' \: '
             else:
                 self.AvarohanamTex = self.AvarohanamTex + self.Avarohanam[i].GetSwaramName() + '_' + str(self.Avarohanam[i].GetSwarasthanam()) + ' \: '
-        self.AvarohanamTex = self.AvarohanamTex + '$'  
+        self.AvarohanamTex = self.AvarohanamTex + ''  
 
         self.AroandAvaroTex = 'Arohanam:  & ' + self.ArohanamTex + '\n'
         self.AroandAvaroTex = self.AroandAvaroTex + 'Avarohanam: & ' + self.AvarohanamTex + '\n'

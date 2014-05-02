@@ -8,9 +8,16 @@ def NoteListToMIDI(filename, note_list, num_aksharam, swaras_per_aksharam):
     MIDI_note_list.append(midi.TrackNameEvent(tick = 0, text = 'Rakesh', data = [70, 76, 32, 75, 101, 121, 115, 32, 49]))
     
     for i in note_list:
-        event = midi.NoteOnEvent(tick = 0, channel = 0, data = [i.MIDINote, 100])
+        if i.MIDINote == 0:
+            event = midi.NoteOnEvent(tick = 0, channel = 0, data = [i.MIDINote, 0])
+        else:
+            event = midi.NoteOnEvent(tick = 0, channel = 0, data = [i.MIDINote, 100])
+        
         MIDI_note_list.append(event)
-        event = midi.NoteOffEvent(tick = int(24*i.NoteLength), channel = 0, data = [i.MIDINote, 100])
+        if i.MIDINote == 0:
+            event = midi.NoteOffEvent(tick = int(24*i.NoteLength), channel = 0, data = [i.MIDINote, 0])
+        else:
+            event = midi.NoteOffEvent(tick = int(24*i.NoteLength), channel = 0, data = [i.MIDINote, 100])
         MIDI_note_list.append(event)
       
     MIDI_note_list.append(midi.EndOfTrackEvent(tick=0, data = []))

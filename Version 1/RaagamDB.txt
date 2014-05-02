@@ -1,7 +1,7 @@
 (dp1
 S'RaagamName'
 p2
-S'Mohanam'
+S'Sree'
 p3
 sS'RaagamMelakartha'
 p4
@@ -27,7 +27,7 @@ NtRp12
 (dp13
 S'Swarasthanam'
 p14
-I2
+I3
 sS'SwaramName'
 p15
 S'N'
@@ -39,7 +39,7 @@ g7
 NtRp17
 (dp18
 g14
-I1
+I2
 sg15
 S'M'
 sbsS'Group3'
@@ -103,7 +103,7 @@ S'D'
 sbag12
 asS'MelakarthaNum'
 p33
-I28
+I65
 sS'Group6'
 p34
 (lp35
@@ -160,50 +160,55 @@ aI11
 aI12
 asS'Chakra'
 p47
-I5
+I11
 sS'Sa'
 p48
 g23
 sS'RaagaPosInChakra'
 p49
-I4
+I5
 sS'Ri'
 p50
 g25
 sbsS'ArohanamTex'
 p51
-S'$S \\: R_2 \\: G_3 \\: P \\: D_2 \\: \\HOct{S} \\:$'
+S'S \\: R_2 \\: M_2 \\: P \\: N_3 \\: \\dot{S} \\:'
 p52
 sS'Arohanam'
 p53
 (lp54
 g23
 ag25
-ag27
+ag17
 ag29
-ag31
+ag12
 ag23
 asS'Avarohanam'
 p55
 (lp56
 g23
-ag31
+ag12
 ag29
+ag31
+ag12
+ag29
+ag17
+ag25
 ag27
 ag25
 ag23
 asS'AvarohanamTex'
 p57
-S'$\\HOct{S} \\: D_2 \\: P \\: G_3 \\: R_2 \\: S \\: $'
+S'\\dot{S} \\: N_3 \\: P \\: D_2 \\: N_3 \\: P \\: M_2 \\: R_2 \\: G_3 \\: R_2 \\: S \\: '
 p58
 sS'AroandAvaroTex'
 p59
-S'Arohanam:  & $S \\: R_2 \\: G_3 \\: P \\: D_2 \\: \\HOct{S} \\:$\nAvarohanam: & $\\HOct{S} \\: D_2 \\: P \\: G_3 \\: R_2 \\: S \\: $\n'
+S'Arohanam:  & S \\: R_2 \\: M_2 \\: P \\: N_3 \\: \\dot{S} \\:\nAvarohanam: & \\dot{S} \\: N_3 \\: P \\: D_2 \\: N_3 \\: P \\: M_2 \\: R_2 \\: G_3 \\: R_2 \\: S \\: \n'
 p60
 s.(dp1
 S'RaagamName'
 p2
-S'Sree'
+S'Shree'
 p3
 sS'RaagamMelakartha'
 p4
@@ -374,7 +379,7 @@ p50
 g25
 sbsS'ArohanamTex'
 p51
-S'$S \\: R_2 \\: M_1 \\: P \\: N_2 \\: \\HOct{S} \\:$'
+S'S \\: R_2 \\: M_1 \\: P \\: N_2 \\: \\dot{S} \\:'
 p52
 sS'Arohanam'
 p53
@@ -401,10 +406,10 @@ ag25
 ag23
 asS'AvarohanamTex'
 p57
-S'$\\HOct{S} \\: N_2 \\: P \\: D_2 \\: N_2 \\: P \\: M_1 \\: R_2 \\: G_2 \\: R_2 \\: S \\: $'
+S'\\dot{S} \\: N_2 \\: P \\: D_2 \\: N_2 \\: P \\: M_1 \\: R_2 \\: G_2 \\: R_2 \\: S \\: '
 p58
 sS'AroandAvaroTex'
 p59
-S'Arohanam:  & $S \\: R_2 \\: M_1 \\: P \\: N_2 \\: \\HOct{S} \\:$\nAvarohanam: & $\\HOct{S} \\: N_2 \\: P \\: D_2 \\: N_2 \\: P \\: M_1 \\: R_2 \\: G_2 \\: R_2 \\: S \\: $\n'
+S'Arohanam:  & S \\: R_2 \\: M_1 \\: P \\: N_2 \\: \\dot{S} \\:\nAvarohanam: & \\dot{S} \\: N_2 \\: P \\: D_2 \\: N_2 \\: P \\: M_1 \\: R_2 \\: G_2 \\: R_2 \\: S \\: \n'
 p60
 s.

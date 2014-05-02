@@ -81,6 +81,7 @@ def GetInputNoteDictFromInput():
                     input_swaram_dict['swaram'] = i
                     input_swaram_dict['octave'] = 0
                     input_swaram_dict['verse'] = latex_note_verse
+                    input_swaram_dict['fast'] = fast_multiplier
                     note_length = note_length + fast_multiplier*1
             elif note_flag == 1:
                 if i in mapping_swaram_list and note_verse_flag == 0:
@@ -91,6 +92,7 @@ def GetInputNoteDictFromInput():
                     note_length = 0
                     input_swaram_dict = {}
                     input_swaram_dict['swaram'] = i
+                    input_swaram_dict['fast'] = fast_multiplier
                     input_swaram_dict['octave'] = 0
                     note_length = note_length + fast_multiplier*1
                 elif i in mapping_swarasthanam_list:

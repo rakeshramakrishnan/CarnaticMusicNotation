@@ -5,7 +5,7 @@ import MappingList
 class Note(Swaram):
     def __init__(self, swaram_name = None, swarasthanam = None, note_length = None, octave = None, MIDI_note = None, 
         swarasthanam_display_flag = None, input_swaram = None, input_octave_char = None, latex_note_verse = '', latex_note = None, 
-        input_swarasthanam_char = None):
+        input_swarasthanam_char = None, note_fast_flag = None):
         ''' Can data be None??? '''
         ''' Do some magic relating to type of data being passed '''
         ''' At some point, it needs to create a swaram object?? '''
@@ -13,6 +13,8 @@ class Note(Swaram):
         self.MIDINote = MIDI_note
         self.NoteLength = note_length
         self.Octave = octave
+        
+        self.NoteFastFlag = note_fast_flag
         
         self.InputSwaram = input_swaram
         self.InputSwarasthanamChar = input_swarasthanam_char
@@ -97,9 +99,14 @@ class Note(Swaram):
     def MIDIToSwaram(cls, MIDI_note_dict, raagam_obj):
         MIDI_note = MIDI_note_dict['note']
         note_length = MIDI_note_dict['duration']
-        latex_note_verse = ''
+        
+        if (int(2*note_length) % 2) == 1:
+            note_fast_flag = 1
+            
+        latex_note_verse = '-'
         if MIDI_note_dict.has_key('verse'):
             latex_note_verse = MIDI_note_dict['verse']
+       
         octave = 0        
         ''' Logic to convert MIDI_note to Swaram '''
         # Higher octave (Mel Sthayi case)
@@ -172,6 +179,7 @@ class Note(Swaram):
         elif MIDI_note == 0:
             swaram_name = ','
             swarasthanam = 0
+            latex_note_verse = ' '
         
         # Check if swarasthanam needs to be printed
         if raagam_obj.GetSwarasthanam(swaram_name) == swarasthanam:
@@ -181,7 +189,7 @@ class Note(Swaram):
         
        
         Note1 = cls(swaram_name = swaram_name, swarasthanam = swarasthanam, note_length = note_length, octave = octave, MIDI_note = MIDI_note, 
-                    swarasthanam_display_flag = swarasthanam_display_flag, latex_note_verse = latex_note_verse)
+                    swarasthanam_display_flag = swarasthanam_display_flag, latex_note_verse = latex_note_verse, note_fast_flag = note_fast_flag)
         return Note1
         
         
@@ -201,12 +209,19 @@ class Note(Swaram):
         note_length = input_note_dict['length']
         latex_note_verse = input_note_dict['verse']
         
+        note_fast_flag = 0
+        if input_note_dict.has_key('fast'):
+            if input_note_dict['fast'] == 0.5:
+                note_fast_flag = 1
+            elif input_note_dict['fast'] == 1:
+                note_fast_flag = 0
+        
         mapping_list = []
         mapping_list = MappingList.GetMappingList()
         
         # Check if latex_note_verse and note_length are None by mistake:
         if latex_note_verse == None:
-            latex_note_verse = ''
+            latex_note_verse = '-'
         
         if note_length == None:
             note_length = 1
@@ -229,6 +244,7 @@ class Note(Swaram):
                         else:
                             swarasthanam = 0
                             swarasthanam_display_flag = 0
+                            latex_note_verse = ' '
                     else:
                         swarasthanam_display_flag = 0
                     break
@@ -237,9 +253,30 @@ class Note(Swaram):
             swarasthanam_display_flag = 0
         # elif swaram_name == ','
         
+        
+        
         Note1 = cls(swaram_name = swaram_name, swarasthanam = swarasthanam, note_length = note_length, octave = octave, input_swaram = input_swaram, 
-                    input_swarasthanam_char = input_swarasthanam_char, input_octave_char = input_octave_char,
+                    input_swarasthanam_char = input_swarasthanam_char, input_octave_char = input_octave_char, note_fast_flag = note_fast_flag,
                     swarasthanam_display_flag = swarasthanam_display_flag, latex_note_verse = latex_note_verse)
-        return Note1        
+        return Note1   
+
+    def GetNoteLength(self):
+        return self.NoteLength
+    
+    def SetNoteLength(self, note_length):
+        self.NoteLength = note_length
+    
+    def GetLatexNote(self):
+        return self.LatexNote
+    def GetLatexVerse(self):
+        return self.LatexNoteVerse
+    
+    def GetNoteFastFlag(self):
+        return self.NoteFastFlag
+    
+    def SetLatexNote(self, latex_note):
+        self.LatexNote = latex_note
+        if latex_note == ',':
+            self.LatexNoteVerse = '-'
             
 
