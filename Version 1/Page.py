@@ -58,6 +58,9 @@ class Page(object):
         self.TabSpacesList = []
         curr_tab_space_num = 1
         
+        if tab_sub_space_list_count == len(tab_sub_space_list):
+            return -1
+        
         # line_creation_result = 0
        
         file_handle.write(r'\begin{changemargin}{-0.8in}{-0.8in}')
@@ -96,11 +99,11 @@ class Page(object):
         
     def PutSectionTitle(self, section_name):
         
-        self.LeftPage.write(r'\vspace{15pt}')
+        #self.LeftPage.write(r'\vspace{10pt}')
         self.LeftPage.write('\n\n')
         self.LeftPage.write(r'\section*{\centering\textcolor{blue}{' + section_name + r'}}')
         self.LeftPage.write('\n\n')
-        self.RightPage.write(r'\vspace{15pt}')
+        #self.RightPage.write(r'\vspace{10pt}')
         self.RightPage.write('\n\n')
         self.RightPage.write(r'\section*{\centering\textcolor{blue}{' + '   ' + r'}}')
         self.LineCount = self.LineCount + 2
