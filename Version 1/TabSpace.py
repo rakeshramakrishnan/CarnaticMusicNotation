@@ -28,10 +28,7 @@ class TabSpace(object):
         
         curr_fast_flag = 0
         
-        print 'HEY!!!!!!'
-        print notes_ending_flag
-        
-        
+                
         file_handle.write(r'\begin{minipage}[t][][s]{' + str(self.TabSpaceWidth) + r'\linewidth}')
         file_handle.write('\n\t')
         file_handle.write(r'\centering%')
@@ -54,8 +51,9 @@ class TabSpace(object):
                 file_handle.write('\n\t')
                 
             elif curr_fast_flag == 0 and tab_sub_space_list[tab_sub_space_list_count].GetFastFlag() == 0:
-                curr_fast_flag = 0    
-                
+                curr_fast_flag = 0  
+
+               
             #####
             # Writing the Tab Sub Space Note
             file_handle.write(tab_sub_space_list[tab_sub_space_list_count].LatexNote)
@@ -64,9 +62,15 @@ class TabSpace(object):
             file_handle.write('\n\t')
             tab_sub_space_list_count = tab_sub_space_list_count + 1
         
+        if curr_fast_flag == 1:
+                curr_fast_flag = 0
+                file_handle.write(self.LatexFastFunctionEnding)
+                file_handle.write('\n\t')
+                    
         if notes_ending_flag != 0:
             file_handle.write(r'\\%')
             file_handle.write('\n\t')
+        
         
         # Writing the verses
         for i in range(notes_ending_flag):
