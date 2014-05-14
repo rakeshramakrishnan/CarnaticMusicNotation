@@ -21,15 +21,7 @@ import re
 
 class SongBook(object):
     def __init__(self):
-        # self.ListOfSectionsAndTabSubSpaces = []
-        self.TabSubSpaceList = []
-        self.SectionAndTabSubSpaceList = []
-        
-    
-    
-    def CreateSongBook(self):
-        # cls
-        print '\n\n\n\n'
+        print '\n\n'
         print 'Welcome to new SongBook creation!!!'
         print 'Use NoteMapper.txt to define your conventions:'
         print 'You need to know data about Raagam of song in order to proceed'
@@ -38,9 +30,7 @@ class SongBook(object):
         print '\n\n'
         
         self.SongName = raw_input('Enter the song name: ')
-        
-        self.TexFile = open(self.SongName + '.tex', 'w')
-        
+            
         self.RaagamName = raw_input('Enter the name of the Raagam: ')
         self.RaagamObj = Raagam(self.RaagamName)
         
@@ -50,13 +40,18 @@ class SongBook(object):
         self.TaalamObj = Taalam(self.TaalamName)
         
         print '\n\n'
-        
+    
+    
+    def CreateSongBook(self):
+        self.TabSubSpaceList = []
+        self.SectionAndTabSubSpaceList = []
         choice_flag = 1
         while choice_flag == 1:
             print 'You now have two choices: '
             print '1. Enter the notes of the song manually'
             print '2. Specify the filename of the MIDI file to extract notes from it'
-            choice = raw_input('Choose 1 or 2: ')
+            print '3. Enter the filename of the text file which contains the input notes'
+            choice = raw_input('Choose 1 or 2 or 3: ')
             print '\n\n'
             if choice == '1':
                 # Enter the notes 
@@ -78,7 +73,7 @@ class SongBook(object):
                 self.MIDI_note_dict_list = []
                 self.MIDI_note_dict_list = MIDIToNoteList(filename)
                 self.NoteList = []
-                for i in MIDI_note_dict_list:
+                for i in self.MIDI_note_dict_list:
                     notetemp = Note.MIDIToSwaram(i, self.RaagamObj)
                     self.NoteList.append(notetemp)
                 
@@ -89,11 +84,53 @@ class SongBook(object):
                 # Create the Song Latex File
                 # self.CreateSongLatexFile()
                 choice_flag = 0
+            
+            elif choice == '3':
+                filename = raw_input('Enter the filename of the text file with the .txt extension: ')
+                print '\n\n'
+                self.NoteMasterList = []
+                start_flag = 0
+                with open(filename, 'r') as f:
+                    for line in f:
+                        if line.startswith('"') == True:
+                            if start_flag == 1:
+                                self.AddToSectionWiseTabSubSpaceList()
+                            self.CurrSectionName = line[1:-2]
+                            # If the next section name is read, write the current section
+                                                            
+                        elif line.startswith(' ') == True or line.startswith('\n') == True:
+                            pass
+                        else:
+                            if start_flag == 0:
+                                start_flag = 1
+                            self.InputNoteList = []
+                            self.InputNoteList = GetInputNoteDictFromInput(line)
+                            self.NoteList = []
+                            for i in self.InputNoteList:
+                                notetemp = Note.InputToSwaram(i, self.RaagamObj)
+                                self.NoteList.append(notetemp)
+                                notetemp2 = copy.deepcopy(notetemp)
+                                self.NoteMasterList.append(notetemp2)
+                            ###################################################################################
+                            # Write the current notes to TabSubSpace List
+                            self.AddToTabSubSpaceList()
+                
+                # Writing the last section to section-wise tab subspace list
+                self.AddToSectionWiseTabSubSpaceList()
+                choice_flag = 0
+                
+                # Writing to MIDI
+                print 'Writing to MIDI\n\n'
+                
+                # Create the MIDI file
+                filename = self.SongName + '.mid'
+                NoteListToMIDI(filename, self.NoteMasterList, self.TaalamObj.NumberOfAksharam, self.TaalamObj.SwarasPerAksharam)
+                        
             else:
                 print 'Invalid Choice!! Enter again'
 
         
-        print 'Have a great time!!'
+        print 'Notes Translated!!'
         
     
     def NoteInput(self):
@@ -118,7 +155,6 @@ class SongBook(object):
                     notetemp2 = copy.deepcopy(notetemp)
                     self.NoteMasterList.append(notetemp2)
                 
-                print 'HEY!!!!'
                 ###################################################################################
                 # Write the current notes to TabSubSpace List
                 self.AddToTabSubSpaceList()
@@ -168,8 +204,7 @@ class SongBook(object):
         tbsspace_length = 0
         tempnotestr = ''
         tempversestr = ''
-        print 'Here!'
-        
+                
         while count < n:
             if self.NoteList[count].GetNoteFastFlag() == 1:
                 curr_length = self.NoteList[count].GetNoteLength()
@@ -199,13 +234,8 @@ class SongBook(object):
             if self.NoteList[count].GetNoteLength() == 0:
                 count = count + 1
         
-        print '\n\n'
-        print 'At last!!'
-
         
     def AddToSectionWiseTabSubSpaceList(self):
-        
-        
         section_and_tab_space = []
         section_and_tab_space.append(self.CurrSectionName)
         section_and_tab_space.append(self.TabSubSpaceList)
@@ -217,6 +247,7 @@ class SongBook(object):
             
     def InitiateBookCreationSequence(self):
         
+        self.TexFile = open(self.SongName + '.tex', 'w')
         
         package = ['[paper=a4paper,margin=1.0in]{geometry}', '{amsmath}', '[svgnames]{xcolor}', '{fancyhdr}', '{tikz}']
         
@@ -241,6 +272,7 @@ class SongBook(object):
         self.TexFile.write('\n\n')
         self.TexFile.write(r'\end{document}')
         self.TexFile.close()
+        
         os.remove('leftpage.txt')
         os.remove('rightpage.txt')
     
@@ -312,13 +344,29 @@ class SongBook(object):
                 
 if __name__ == '__main__':
     songbook = SongBook()
-    songbook.CreateSongBook()
-    print '\n\n'
-    print 'You have now entered the notes of the song. \n'
-    choice = raw_input('Shall we generate the Latex Code of the song book? (Y or N): ')
-    if choice.upper() == 'Y':
-        songbook.InitiateBookCreationSequence()
+    
+    notes_satisfaction_flag = 0
+    
+    while notes_satisfaction_flag == 0:
+        songbook.CreateSongBook()
+        print '\n\n'
+        print 'You have now entered the notes of the song. \n'
+        choice = raw_input('Shall we generate the Latex Code of the song book? (Y or N): ')
+        if choice.upper() == 'Y':
+            songbook.InitiateBookCreationSequence()
         
+        input_wrong_flag = 1
+        while input_wrong_flag == 1:
+            choice = raw_input('Enter the notes again? (Y or N): ')
+            if choice.upper() == 'Y':
+                notes_satisfaction_flag = 0
+                input_wrong_flag = 0
+            elif choice.upper() == 'N':
+                notes_satisfaction_flag = 1
+                input_wrong_flag = 0
+            else: 
+                print 'Invalid Choice'
+                input_wrong_flag = 1
     
     
     
