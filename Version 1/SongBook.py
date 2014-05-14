@@ -7,6 +7,7 @@ from TabSubSpace import *
 import midi
 import copy
 import os
+import shutil
 
 
 from InputToSwaram import *
@@ -275,8 +276,16 @@ class SongBook(object):
         
         os.remove('leftpage.txt')
         os.remove('rightpage.txt')
-    
-    
+        
+        if os.path.isdir(self.SongName) == True:
+            shutil.rmtree(self.SongName)
+            
+        os.mkdir(self.SongName)
+        texfilestr = self.SongName + r'/' + self.SongName + r'.tex'
+        midfilestr = self.SongName + r'/' + self.SongName + r'.mid'
+        shutil.move(self.SongName + r'.tex', texfilestr)
+        shutil.move(self.SongName + r'.mid', midfilestr)
+       
     
     def CreatePages(self):
         self.PageList = []
