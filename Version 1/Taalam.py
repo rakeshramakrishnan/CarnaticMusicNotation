@@ -45,6 +45,7 @@ class Taalam(object):
             
     
     def CalculateTabSpaceWidth(self):
+        self.TabSpaceWidth = 0.23
         if self.NumberOfAksharam == 4 and self.SwarasPerAksharam == 4:
             self.TabSpaceWidth = 0.23
         elif self.NumberOfAksharam == 3 and self.SwarasPerAksharam == 6:
@@ -55,6 +56,8 @@ class Taalam(object):
             self.TabSpaceWidth = 0.20
         elif self.NumberOfAksharam == 4 and self.SwarasPerAksharam == 6:
             self.TabSpaceWidth = 0.18
+        elif self.NumberOfAksharam == 3 and self.SwarasPerAksharam == 4:
+            self.TabSpaceWidth = 0.23
 
 
     def GetTaalamFormalName(self):
