@@ -4,7 +4,7 @@ import MappingList
 import re
 # input_swaram, input_swarasthanam_char, input_octave_char, note_length, latex_note_verse, raagam_obj
 
-def GetInputNoteDictFromInput():
+def GetInputNoteDictFromInput(line = None):
 
     # with open('NoteMapper.txt', 'r') as f:
         # mapping_list = []
@@ -30,7 +30,6 @@ def GetInputNoteDictFromInput():
     mapping_list = []
     mapping_list = MappingList.GetMappingList() 
     
-    
     input_note_list = [] 
 
     mapping_swaram_list = [i[1] for i in mapping_list]
@@ -40,11 +39,7 @@ def GetInputNoteDictFromInput():
     mapping_swarasthanam_list = [i[1] for i in mapping_list]
     mapping_swarasthanam_list = [i[-1] for i in mapping_swarasthanam_list if len(i)>1]
     mapping_swarasthanam_list = list(set(mapping_swarasthanam_list))
-
-    input_flag = 1
-
-    print 'Enter the notes for the song. Enter \'0\' to stop entering notes'
-
+    
     note_flag = 0
     note_length = 0
     note_verse_flag = 0
@@ -53,24 +48,80 @@ def GetInputNoteDictFromInput():
     fast_multiplier = 1
     input_swaram_dict = {}
 
-    while input_flag:
-        input_str = raw_input('\>: ')
+    if line == None:
+
+        input_flag = 1
+
+        print 'Enter the notes for the song. Enter \'0\' to stop entering notes'
         
-        if input_str == '0':
-            input_flag = 0
-            input_swaram_dict['length'] = note_length
-            input_swaram_dict['verse'] = latex_note_verse
-            input_note_list.append(input_swaram_dict)
-            break
+        while input_flag:
+            input_str = raw_input('\>: ')
+            
+            if input_str == '0':
+                input_flag = 0
+                input_swaram_dict['length'] = note_length
+                input_swaram_dict['verse'] = latex_note_verse
+                input_note_list.append(input_swaram_dict)
+                break
+            
+            tempstr = ''
+            for i in mapping_swaram_list:
+                tempstr = tempstr + '(' + i + ')' + '|'   
+            tempstr = tempstr + '(.)' + '|' + '(\')' + '(()' + '())'    
+            input_str = re.split(tempstr, input_str)
+            input_str = [i for i in input_str if i !=None and i != '' and i != ' ']
+            
+            for i in input_str:
+                if i == '{':
+                        fast_multiplier = 0.5
+                elif i == '}':
+                        fast_multiplier = 1
+                elif note_flag == 0:
+                    if i in mapping_swaram_list and note_verse_flag == 0:
+                        note_flag = 1
+                        input_swaram_dict['swaram'] = i
+                        input_swaram_dict['octave'] = 0
+                        input_swaram_dict['verse'] = latex_note_verse
+                        input_swaram_dict['fast'] = fast_multiplier
+                        note_length = note_length + fast_multiplier*1
+                elif note_flag == 1:
+                    if i in mapping_swaram_list and note_verse_flag == 0:
+                        input_swaram_dict['length'] = note_length
+                        input_swaram_dict['verse'] = latex_note_verse
+                        latex_note_verse = ''
+                        input_note_list.append(input_swaram_dict)
+                        note_length = 0
+                        input_swaram_dict = {}
+                        input_swaram_dict['swaram'] = i
+                        input_swaram_dict['fast'] = fast_multiplier
+                        input_swaram_dict['octave'] = 0
+                        note_length = note_length + fast_multiplier*1
+                    elif i in mapping_swarasthanam_list:
+                        input_swaram_dict['swarasthanam'] = i
+                    elif i == ',':
+                        note_length = note_length + fast_multiplier*1
+                    elif i == '.':
+                        input_swaram_dict['octave'] = -1
+                        input_swaram_dict['octavechar'] = i
+                    elif i == '\'':
+                        input_swaram_dict['octave'] = 1
+                        input_swaram_dict['octavechar'] = i
+                    elif i == '(':
+                        note_verse_flag = 1
+                    elif i == ')':
+                        note_verse_flag = 0
+                    elif note_verse_flag == 1 and i !='(':
+                        latex_note_verse = latex_note_verse + i
         
+    else:
         tempstr = ''
         for i in mapping_swaram_list:
             tempstr = tempstr + '(' + i + ')' + '|'   
         tempstr = tempstr + '(.)' + '|' + '(\')' + '(()' + '())'    
-        input_str = re.split(tempstr, input_str)
-        input_str = [i for i in input_str if i !=None and i != '' and i != ' ']
+        line = re.split(tempstr, line)
+        line = [i for i in line if i !=None and i != '' and i != ' ']
         
-        for i in input_str:
+        for i in line:
             if i == '{':
                     fast_multiplier = 0.5
             elif i == '}':
@@ -111,7 +162,13 @@ def GetInputNoteDictFromInput():
                     note_verse_flag = 0
                 elif note_verse_flag == 1 and i !='(':
                     latex_note_verse = latex_note_verse + i
-    
+        
+        # Writing remaining data
+        input_swaram_dict['length'] = note_length
+        input_swaram_dict['verse'] = latex_note_verse
+        input_note_list.append(input_swaram_dict)    
+        
+        
     return input_note_list
 
 
