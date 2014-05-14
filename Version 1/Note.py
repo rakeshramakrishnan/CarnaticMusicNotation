@@ -102,6 +102,8 @@ class Note(Swaram):
         
         if (int(2*note_length) % 2) == 1:
             note_fast_flag = 1
+        else:
+            note_fast_flag = 0
             
         latex_note_verse = '-'
         if MIDI_note_dict.has_key('verse'):
@@ -220,7 +222,7 @@ class Note(Swaram):
         mapping_list = MappingList.GetMappingList()
         
         # Check if latex_note_verse and note_length are None by mistake:
-        if latex_note_verse == None:
+        if latex_note_verse == None or len(latex_note_verse) == 0:
             latex_note_verse = '-'
         
         if note_length == None:
@@ -244,7 +246,7 @@ class Note(Swaram):
                         else:
                             swarasthanam = 0
                             swarasthanam_display_flag = 0
-                            latex_note_verse = ' '
+                            # latex_note_verse = ' '
                     else:
                         swarasthanam_display_flag = 0
                     break
@@ -277,6 +279,6 @@ class Note(Swaram):
     def SetLatexNote(self, latex_note):
         self.LatexNote = latex_note
         if latex_note == ',':
-            self.LatexNoteVerse = '-'
+            self.LatexNoteVerse = ' '
             
 
