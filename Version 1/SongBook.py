@@ -74,13 +74,23 @@ class SongBook(object):
                 self.MIDI_note_dict_list = []
                 self.MIDI_note_dict_list = MIDIToNoteList(filename)
                 self.NoteList = []
+                self.NoteMasterList = []
                 for i in self.MIDI_note_dict_list:
                     notetemp = Note.MIDIToSwaram(i, self.RaagamObj)
                     self.NoteList.append(notetemp)
+                    notetemp2 = copy.deepcopy(notetemp)
+                    self.NoteMasterList.append(notetemp2)
+                
                 
                 self.CurrSectionName = 'Main Song'
                 self.AddToTabSubSpaceList()
                 self.AddToSectionWiseTabSubSpaceList()
+                
+                print 'Writing to MIDI\n\n'
+                
+                # Create the MIDI file
+                filename = self.SongName + '.mid'
+                NoteListToMIDI(filename, self.NoteMasterList, self.TaalamObj.NumberOfAksharam, self.TaalamObj.SwarasPerAksharam)
                 
                 # Create the Song Latex File
                 # self.CreateSongLatexFile()
@@ -205,7 +215,6 @@ class SongBook(object):
         tbsspace_length = 0
         tempnotestr = ''
         tempversestr = ''
-                
         while count < n:
             if self.NoteList[count].GetNoteFastFlag() == 1:
                 curr_length = self.NoteList[count].GetNoteLength()
