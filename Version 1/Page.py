@@ -83,10 +83,10 @@ class Page(object):
         
         
         if file_handle == self.LeftPage:
-            file_handle.write(r'\textbar \\[5mm]%')
+            file_handle.write(r'\textbar \\[3mm]%')
             file_handle.write('\n')
         elif file_handle == self.RightPage:
-            file_handle.write(r'\textbar\textbar \\[5mm]%')
+            file_handle.write(r'\textbar\textbar \\[3mm]%')
             file_handle.write('\n')
         
         
