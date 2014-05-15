@@ -5,7 +5,7 @@ class TabSubSpace(object):
         self.LatexFunctionName = r'\TBSSpace'
         self.LatexFunctionDefinition = r'\newcommand{\TBSspace}[1]{\makebox[0.20\linewidth][c]{$\text{#1}$}}' + '\n\n'
         self.LatexNote = self.LatexFunctionName + '{' + note_latex + '}%'
-        self.LatexVerse = self.LatexFunctionName + '{' + verse_latex + '}%'
+        self.LatexVerse = self.LatexFunctionName + r'{$\boldsymbol{' + verse_latex + r'}$}%'
         self.FastFlag = fast_flag
     
     def GetLatexNote(self):
