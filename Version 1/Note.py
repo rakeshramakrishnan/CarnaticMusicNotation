@@ -189,6 +189,15 @@ class Note(Swaram):
         else:
             swarasthanam_display_flag = 1
         
+        # Restoring MIDI_note information after deciphering swaram
+        if octave == -2:
+            MIDI_note = MIDI_note - 24
+        if octave == -1:
+            MIDI_note = MIDI_note - 12
+        if octave == 1:
+            MIDI_note = MIDI_note + 12
+        if octave == 2:
+            MIDI_note = MIDI_note + 24
        
         Note1 = cls(swaram_name = swaram_name, swarasthanam = swarasthanam, note_length = note_length, octave = octave, MIDI_note = MIDI_note, 
                     swarasthanam_display_flag = swarasthanam_display_flag, latex_note_verse = latex_note_verse, note_fast_flag = note_fast_flag)
