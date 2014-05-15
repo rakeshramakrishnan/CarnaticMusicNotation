@@ -29,7 +29,7 @@ def MIDIToNoteList(filename):
     for j in range(1,len(pattern[1]) - 1):
         if type(pattern[1][j]) == midi.events.NoteOnEvent:
             curr_note_duration = curr_note_duration + pattern[1][j].tick
-            if (round(curr_note_duration * 2.0 / tick_tempo)/2):
+            if (round(curr_note_duration * 2.0 / tick_tempo)/2) != 0:
                 note_list.append({'note': curr_note, 'duration':round(curr_note_duration * 2.0 / tick_tempo)/2})
                 curr_note_duration = 0
             curr_note = pattern[1][j].data[0]
@@ -37,12 +37,14 @@ def MIDIToNoteList(filename):
         elif type(pattern[1][j]) == midi.events.NoteOffEvent:
             curr_note_duration = curr_note_duration + pattern[1][j].tick
             if curr_note == pattern[1][j].data[0]:
-                note_list.append({'note': curr_note, 'duration':round(curr_note_duration * 2.0 / tick_tempo)/2})
-                curr_note_duration = 0
-                curr_note = 0
+                if (round(curr_note_duration * 2.0 / tick_tempo)/2) != 0:
+                    note_list.append({'note': curr_note, 'duration':round(curr_note_duration * 2.0 / tick_tempo)/2})
+                    curr_note_duration = 0
+                    curr_note = 0
             elif curr_note == 0:
-                note_list.append({'note': pattern[1][j].data[0], 'duration':round(pattern[1][j].tick * 2.0 / tick_tempo)/2})
-                curr_note_duration = 0
+                if (round(curr_note_duration * 2.0 / tick_tempo)/2) != 0:
+                    note_list.append({'note': pattern[1][j].data[0], 'duration':round(pattern[1][j].tick * 2.0 / tick_tempo)/2})
+                    curr_note_duration = 0
             
     # print note_list    
 
