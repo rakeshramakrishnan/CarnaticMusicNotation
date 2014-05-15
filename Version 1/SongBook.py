@@ -250,7 +250,8 @@ class SongBook(object):
         
         self.TexFile = open(self.SongName + '.tex', 'w')
         
-        package = ['[paper=a4paper,margin=1.0in]{geometry}', '{amsmath}', '[svgnames]{xcolor}', '{fancyhdr}', '{tikz}']
+        package = ['[paper=a4paper,margin=1.0in]{geometry}', '{amsmath}', '[svgnames]{xcolor}', '{fancyhdr}', '{tikz}', \
+                   '[pdfpagelayout=TwoPageRight]{hyperref}']
         
         t.tex_preamble(self.TexFile, package)
         PutTitlePreamble(self.TexFile, self.SongName, self.RaagamName, self.TaalamName, self.RaagamObj.ArohanamTex, self.RaagamObj.AvarohanamTex)
