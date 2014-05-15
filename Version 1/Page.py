@@ -58,8 +58,9 @@ class Page(object):
         self.TabSpacesList = []
         curr_tab_space_num = 1
         
-        if tab_sub_space_list_count == len(tab_sub_space_list):
-            return -1
+        if file_handle == self.LeftPage:
+            if tab_sub_space_list_count == len(tab_sub_space_list):
+                return -1
         
         # line_creation_result = 0
        
