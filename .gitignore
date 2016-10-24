@@ -10,6 +10,9 @@
 __pycache__/
 *.py[cod]
 
+# Vim temp files
+*.swp
+
 # Distribution / packaging
 *.egg-info/
 .Python
